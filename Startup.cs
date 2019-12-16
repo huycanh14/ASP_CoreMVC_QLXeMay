@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebQLXeMay.Middlewares;
 using WebQLXeMay.Repository;
 using WebQLXeMay.Services;
 
@@ -34,6 +35,8 @@ namespace WebQLXeMay
             services.AddTransient<INCC, NCCRepository>();
             services.AddTransient<INhanVien, NhanVienRepository>();
             services.AddTransient<IXeMay, XeMayRepository>();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +51,9 @@ namespace WebQLXeMay
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseSession();
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseStaticFiles();
 
