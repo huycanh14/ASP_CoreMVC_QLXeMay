@@ -11,7 +11,10 @@ namespace WebQLXeMay.Repository
     {
         private DBContext db;
         public IQueryable<XeMay> GetXeMays => db.XeMays;
-
+        public XeMayRepository(DBContext _db)
+        {
+            db = _db;
+        }
         public void Add(XeMay _xeMay)
         {
             db.XeMays.Add(_xeMay);

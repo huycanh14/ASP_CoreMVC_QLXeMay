@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebQLXeMay.Repository;
+using WebQLXeMay.Services;
 
 namespace WebQLXeMay
 {
@@ -26,6 +27,13 @@ namespace WebQLXeMay
             services.AddDbContext<DBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
             services.AddMvc();
+            services.AddTransient<IAdmin, AdminRepository>();
+            services.AddTransient<IHDNhap, HDNhapRepository>();
+            services.AddTransient<IHDXuat, HDXuatRepository>();
+            services.AddTransient<IKhachHang, KhachHangRepository>();
+            services.AddTransient<INCC, NCCRepository>();
+            services.AddTransient<INhanVien, NhanVienRepository>();
+            services.AddTransient<IXeMay, XeMayRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

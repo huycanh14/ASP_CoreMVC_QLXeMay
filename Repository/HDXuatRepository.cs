@@ -11,6 +11,10 @@ namespace WebQLXeMay.Repository
     {
         private DBContext db;
         public IQueryable<HDXuat> HDXuats => db.HDXuats;
+        public HDXuatRepository(DBContext _db)
+        {
+            db = _db;
+        }
 
         public void Add(HDXuat _hdXuat)
         {

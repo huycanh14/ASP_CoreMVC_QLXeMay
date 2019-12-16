@@ -11,7 +11,10 @@ namespace WebQLXeMay.Repository
     {
         private DBContext db;
         public IQueryable<NCC> GetNCCs => db.NCCs;
-
+        public NCCRepository(DBContext _db)
+        {
+            db = _db;
+        }
         public void Add(NCC _ncc)
         {
             db.NCCs.Add(_ncc);

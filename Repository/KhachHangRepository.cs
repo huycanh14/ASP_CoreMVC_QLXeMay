@@ -11,7 +11,10 @@ namespace WebQLXeMay.Repository
     {
         private DBContext db;
         public IQueryable<KhachHang> GetKhachHangs => db.KhachHangs;
-
+        public KhachHangRepository(DBContext _db)
+        {
+            db = _db;
+        }
         public void Add(KhachHang _khachHang)
         {
             db.KhachHangs.Add(_khachHang);

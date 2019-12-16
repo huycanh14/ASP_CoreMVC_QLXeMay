@@ -12,6 +12,10 @@ namespace WebQLXeMay.Repository
         private DBContext db;
         public IQueryable<HDNhap> GetHDNhaps => db.HDNhaps;
 
+        public HDNhapRepository(DBContext _db)
+        {
+            db = _db;
+        }
         public void Add(HDNhap _hdNhap)
         {
             db.HDNhaps.Add(_hdNhap);
