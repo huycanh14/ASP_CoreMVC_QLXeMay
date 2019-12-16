@@ -13,12 +13,12 @@ namespace WebQLXeMay.Repository
         {
 
         }
-        DbSet<Admin> Admins { get; set; }
-        DbSet<HDNhap> HDNhaps { get; set; }
-        DbSet<HDXuat> HDXuats { get; set; }
-        DbSet<KhachHang> KhachHangs { get; set; }
-        DbSet<NCC> NCCs { get; set; }
-        DbSet<NhanVien> NhanViens { get; set; }
-        DbSet<XeMay> XeMays { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<HDNhap> HDNhaps { get; set; }
+        public DbSet<HDXuat> HDXuats { get; set; }
+        public DbSet<KhachHang> KhachHangs { get; set; }
+        public DbSet<NCC> NCCs { get; set; }
+        public DbSet<NhanVien> NhanViens { get; set; }
+        public DbSet<XeMay> XeMays { get; set; }
     }
 }
