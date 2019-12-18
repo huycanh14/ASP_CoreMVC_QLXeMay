@@ -22,12 +22,12 @@ namespace WebQLXeMay.Middlewares
         public Task Invoke(HttpContext httpContext)
         {
             var path = httpContext.Request.Path;
-            if(path.HasValue && path.Value.StartsWith("/Home/About")) { }
+            if(path.HasValue && path.Value.StartsWith("/Login")) { }
             else
             {
-                if (httpContext.Session.GetString("username") == null)
+                if (httpContext.Session.GetString("account_login") == null)
                 {
-                    httpContext.Response.Redirect("/Home/About");
+                    httpContext.Response.Redirect("/Login");
                 }
             }
             return _next(httpContext);
