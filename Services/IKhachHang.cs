@@ -13,6 +13,7 @@ namespace WebQLXeMay.Services
         KhachHang GetKhachHang(string id);
         void Add(KhachHang _khachHang);
         void Remove(string id);
+        int Count { get; }
 
     }
 }

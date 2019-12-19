@@ -32,5 +32,7 @@ namespace WebQLXeMay.Repository
             db.KhachHangs.Remove(dbEnity);
             db.SaveChanges();
         }
+
+        public int Count => db.KhachHangs.Count();
     }
 }

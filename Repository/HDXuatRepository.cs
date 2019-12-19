@@ -33,5 +33,18 @@ namespace WebQLXeMay.Repository
             db.HDXuats.Remove(dbEntity);
             db.SaveChanges();
         }
+
+        public object Report(DateTime startTime, DateTime endTime)
+        {
+            var data = db.HDXuats
+                          .Where(x => x.NgayLap >= startTime && x.NgayLap <= endTime)
+                          .GroupBy(x => new { x.MaXe })
+                          .Select(x => new
+                          {
+                              MaXe = x.Key.MaXe,
+                              SoLuong = x.Sum(s => s.SoLuong)
+                          });
+            return data;
+        }
     }
 }

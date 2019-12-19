@@ -32,5 +32,6 @@ namespace WebQLXeMay.Repository
             db.NhanViens.Remove(dbEntity);
             db.SaveChanges();
         }
+        public int Count => db.NhanViens.Count();
     }
 }

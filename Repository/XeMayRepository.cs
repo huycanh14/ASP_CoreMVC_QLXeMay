@@ -32,5 +32,7 @@ namespace WebQLXeMay.Repository
             db.XeMays.Remove(dbEntity);
             db.SaveChanges();
         }
+
+        public int Count => db.XeMays.Count();
     }
 }

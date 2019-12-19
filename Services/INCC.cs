@@ -12,5 +12,6 @@ namespace WebQLXeMay.Services
         NCC GetNCC(string id);
         void Add(NCC _ncc);
         void Remove(string id);
+        int Count { get; }
     }
 }

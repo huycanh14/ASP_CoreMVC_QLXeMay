@@ -12,5 +12,6 @@ namespace WebQLXeMay.Services
         HDXuat GetHDXuat(string id);
         void Add(HDXuat _hdXuat);
         void Remove(string id);
+        object Report(DateTime startTime, DateTime endTime);
     }
 }

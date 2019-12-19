@@ -12,5 +12,6 @@ namespace WebQLXeMay.Services
         NhanVien GetNhanVien(string id);
         void Add(NhanVien _nhanVien);
         void Remove(string id);
+        int Count { get; }
     }
 }

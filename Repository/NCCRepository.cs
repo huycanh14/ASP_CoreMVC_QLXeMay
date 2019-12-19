@@ -32,5 +32,6 @@ namespace WebQLXeMay.Repository
             db.NCCs.Remove(dbEntity);
             db.SaveChanges();
         }
+        public int Count => db.NCCs.Count();
     }
 }

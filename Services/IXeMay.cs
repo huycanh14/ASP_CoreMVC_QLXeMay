@@ -6,11 +6,12 @@ using WebQLXeMay.Models;
 
 namespace WebQLXeMay.Services
 {
-    interface IXeMay
+    public interface IXeMay
     {
         IQueryable<XeMay> GetXeMays { get; }
         XeMay GetXeMay(string id);
         void Add(XeMay _xeMay);
         void Remove(string id);
+        int Count { get; }
     }
 }

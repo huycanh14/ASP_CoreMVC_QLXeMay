@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebQLXeMay.Models;
 using WebQLXeMay.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebQLXeMay.Repository
 {
@@ -33,10 +34,10 @@ namespace WebQLXeMay.Repository
             db.Admins.Remove(dbEntity);
             db.SaveChanges();
         }
-        public bool Login(string username, string password)
+        public Admin Login(string username, string password)
         {
-            int count = db.Admins.Where(a => a.TenDangNhap == username && a.MatKhau == password).Count();
-            return (count > 0) ? true : false;
+            return db.Admins.Where(a => a.TenDangNhap == username && a.MatKhau == password)
+                            .FirstOrDefault();
         }
 
     }

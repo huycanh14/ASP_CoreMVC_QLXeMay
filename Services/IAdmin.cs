@@ -12,6 +12,6 @@ namespace WebQLXeMay.Services
         Admin GetAdmin(int id);
         void Add(Admin admin);
         void Remove(int id);
-        bool Login(string username, string password);
+        Admin Login(string username, string password);
     }
 }
