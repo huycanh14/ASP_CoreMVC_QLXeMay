@@ -26,10 +26,11 @@ namespace WebQLXeMay.Controllers
         //[ValidateAntiForgeryToken]
         public IActionResult Login(string username, string password)
         {
-            object data = _Admin.Login(username, password);
-            if(data != null)
+            var data = _Admin.Login(username, password);
+            string data_account = data.TenDangNhap + "," + data.HoVaTen + "," + data.ID;
+            if (data != null)
             {
-                HttpContext.Session.SetString("account_login", JsonConvert.SerializeObject(data));
+                HttpContext.Session.SetString("account_login", data_account);
             }
             else
             {
