@@ -1,0 +1,91 @@
+﻿@model PagedList.Core.IPagedList<WebQLXeMay.Models.NCC>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["TitleHeader"] = "Danh sách Nhà cung cấp";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<form method="get" asp-controller="NCC" asp-action="Index" class="p-4">
+    <div class="row">
+        <div class="col-5">
+            <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control" placeholder="Search" aria-label="Search" />
+        </div>
+        <div class="col-2">
+            <input type="submit" name="Search" value="Submit" class="btn btn-secondary" />
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped" border="1">
+    <thead class=" table-success ">
+        <tr>
+            <th scope="col">
+                Mã Nhà cung cấp
+            </th>
+            <th scope="col">
+                Tên Nhà cung cấp
+            </th>
+            <th scope="col">
+                Số điện thoại
+            </th>
+            <th scope="col">
+                Địa chỉ
+            </th>
+            <th scope="col">
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @item.MaNCC
+                </td>
+                <td>
+                    @item.TenNCC
+                </td>
+                <td>
+                    @item.SDT
+                </td>
+                <td>
+                    @item.DiaChi
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<nav aria-label="Page navigation example">
+    <pager list="@Model" options="@PagedListRenderOptions.TwitterBootstrapPager"
+           class="pager-container"
+           asp-controller="NCC" asp-action="Index"
+           asp-route-keyword="@ViewBag.keyword" />
+</nav>
+@section Scripts
+{
+    <script>
+        let li_pag = $(".pagination > li");
+        let ai_pag = $(".pagination > li > a")
+        for (let i = 0; i < li_pag.length; i++) {
+            li_pag[i].classList.add("page-item");
+            ai_pag[i].classList.add("page-link");
+        }
+    </script>
+}
