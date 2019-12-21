@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace WebQLXeMay.Services
 {
     public interface INCC
     {
-        IQueryable<NCC> GetNCCs { get; }
+        PagedList<NCC> GetNCCs(int page, string keyword);
         NCC GetNCC(string id);
         void Add(NCC _ncc);
         void Remove(string id);

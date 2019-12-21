@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,14 @@ namespace WebQLXeMay.Repository
     public class NCCRepository : INCC
     {
         private DBContext db;
-        public IQueryable<NCC> GetNCCs => db.NCCs;
+        //public IQueryable<NCC> GetNCCs => db.NCCs;
+        public PagedList<NCC> GetNCCs(int page = 1, string keyword = "")
+        {
+            int pageSize = 5;
+            var ncc = (keyword != null) ? db.NCCs.Where(p => p.TenNCC.Contains(keyword)): db.NCCs;
+            PagedList<NCC> data = new PagedList<NCC>(ncc, page, pageSize);
+            return data;
+        }
         public NCCRepository(DBContext _db)
         {
             db = _db;

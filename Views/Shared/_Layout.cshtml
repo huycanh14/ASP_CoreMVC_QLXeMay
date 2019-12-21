@@ -2,7 +2,9 @@
     @using Microsoft.AspNetCore.Http;
     @inject IHttpContextAccessor HttpContextAccessor;
     string data = @HttpContextAccessor.HttpContext.Session.GetString("account_login");
-    string[] Account = data.Split(",");
+    string[] Account = new string[3];
+
+    Account = (data != null) ? data.Split(",") : Account;
 
 }
 <!DOCTYPE html>
@@ -76,7 +78,7 @@
                         <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Nhà cung cấp</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="general.html"><i class="ion ion-ios-circle-outline"></i> Basic</a></li>
+                                <li><a asp-controller="NCC" asp-action="Index"><i class="ion ion-ios-circle-outline"></i> Danh sách</a></li>
                                 <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
                                 <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
                                 <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>

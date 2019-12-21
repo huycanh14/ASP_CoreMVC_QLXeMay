@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ namespace WebQLXeMay
         {
             services.AddDbContext<DBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddMvc();
             services.AddTransient<IAdmin, AdminRepository>();
             services.AddTransient<IHDNhap, HDNhapRepository>();
