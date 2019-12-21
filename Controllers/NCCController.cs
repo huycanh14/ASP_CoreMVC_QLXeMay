@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebQLXeMay.Models;
 using WebQLXeMay.Services;
 
 namespace WebQLXeMay.Controllers
@@ -25,6 +26,21 @@ namespace WebQLXeMay.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(NCC ncc)
+        {
+            try
+            {
+                _ncc.Add(ncc);
+                ViewBag.Done = "Thêm tài khoản thành công";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            return View(ncc);
         }
     }
 }

@@ -1,40 +1,37 @@
 ﻿@model WebQLXeMay.Models.NCC
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create NCC";
+    ViewData["TitleHeader"] = "Thêm Nhà cung cấp";
 }
-
-<h2>Create</h2>
-
-<h4>NCC</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MaNCC" class="control-label"></label>
+                <label class="control-label">Mã Nhà cung cấp</label>
                 <input asp-for="MaNCC" class="form-control" />
                 <span asp-validation-for="MaNCC" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TenNCC" class="control-label"></label>
+                <label class="control-label">Tên Nhà cung cấp</label>
                 <input asp-for="TenNCC" class="form-control" />
                 <span asp-validation-for="TenNCC" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SDT" class="control-label"></label>
+                <label class="control-label">Số điện thoại</label>
                 <input asp-for="SDT" class="form-control" />
                 <span asp-validation-for="SDT" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
+                <label class="control-label">Địa chỉ</label>
                 <input asp-for="DiaChi" class="form-control" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,5 +46,18 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ 
+        var message_done = ViewBag.Done;
+        var message_err = ViewBag.Error;
+    }
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+    <script>
+        var message_done = '@Html.Raw(message_done)';
+        var message_err = '@Html.Raw(message_err)';
+        if (message_done != "" && message_done != null) {
+            toastr.success(message_done, 'Thành công!');
+        } else if (message_err != "" && message_err != null) {
+            toastr.error(message_err, 'Lỗi!');
+        }
+    </script>
 }
