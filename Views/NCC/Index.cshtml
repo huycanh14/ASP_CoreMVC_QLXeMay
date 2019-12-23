@@ -63,9 +63,9 @@
                     @item.Email
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNCC }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaNCC }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNCC })
                 </td>
             </tr>
         }
@@ -80,12 +80,24 @@
 </nav>
 @section Scripts
 {
+    @{
+        var message_done = ViewBag.Done;
+        var message_err = ViewBag.Error;
+    }
     <script>
         let li_pag = $(".pagination > li");
         let ai_pag = $(".pagination > li > a")
         for (let i = 0; i < li_pag.length; i++) {
             li_pag[i].classList.add("page-item");
             ai_pag[i].classList.add("page-link");
+        }
+        var message_done = '@Html.Raw(message_done)';
+        var message_err = '@Html.Raw(message_err)';
+        console.log(message_done)
+        if (message_done != "" && message_done != null) {
+            toastr.success(message_done, 'Thành công!');
+        } else if (message_err != "" && message_err != null) {
+            toastr.error(message_err, 'Lỗi!');
         }
     </script>
 }

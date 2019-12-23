@@ -12,6 +12,7 @@ namespace WebQLXeMay.Services
         PagedList<NCC> GetNCCs(int page, string keyword);
         NCC GetNCC(string id);
         void Add(NCC _ncc);
+        void Edit(NCC _ncc);
         void Remove(string id);
         int Count { get; }
     }

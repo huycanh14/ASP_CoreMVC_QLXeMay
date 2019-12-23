@@ -26,6 +26,9 @@
 
   <ItemGroup>
     <None Include="Views\NCC\Create.cshtml" />
+    <None Include="Views\NCC\Delete.cshtml" />
+    <None Include="Views\NCC\Details.cshtml" />
+    <None Include="Views\NCC\Edit.cshtml" />
     <None Include="Views\NCC\Index.cshtml" />
   </ItemGroup>
 

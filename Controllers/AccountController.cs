@@ -27,9 +27,9 @@ namespace WebQLXeMay.Controllers
         public IActionResult Login(string username, string password)
         {
             var data = _Admin.Login(username, password);
-            string data_account = data.TenDangNhap + "," + data.HoVaTen + "," + data.ID;
             if (data != null)
             {
+                string data_account = data.TenDangNhap + "," + data.HoVaTen + "," + data.ID;
                 HttpContext.Session.SetString("account_login", data_account);
             }
             else

@@ -40,6 +40,13 @@ namespace WebQLXeMay.Repository
             db.NCCs.Remove(dbEntity);
             db.SaveChanges();
         }
+
+        public void Edit(NCC _ncc)
+        {
+            db.NCCs.Update(_ncc);
+            db.SaveChanges();
+        }
+
         public int Count => db.NCCs.Count();
     }
 }
