@@ -91,8 +91,14 @@
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
     var curr = new Date;
-    var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay())).toJSON().slice(0,10);
-    var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay()+6)).toJSON().slice(0,10);
+    var startDay = 1; //0=sunday, 1=monday etc.
+    var d = curr.getDay(); //get the current day
+    var firstday = new Date(curr.valueOf() - (d<=0 ? 7-startDay:d-startDay)*86400000); //rewind to start day
+    var lastday = new Date(firstday.valueOf() + 6*86400000);
+    //var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay())).toJSON().slice(0,10);
+    //var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay()+6)).toJSON().slice(0,10);
+    firstday = firstday.toJSON().slice(0, 10);
+    lastday = lastday.toJSON().slice(0, 10);
     var callReport = (time) => {
         let btn = $(".callReport");
         console.log(btn);
@@ -105,8 +111,12 @@
         switch (time) {
             case 'week':
                 btn[0].classList.add("active");
-                firstday = new Date(curr.setDate(curr.getDate() - curr.getDay())).toJSON().slice(0, 10);
-                lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6)).toJSON().slice(0, 10);
+                //firstday = new Date(curr.setDate(curr.getDate() - curr.getDay())).toJSON().slice(0, 10);
+                //lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6)).toJSON().slice(0, 10);
+                var firstday = new Date(curr.valueOf() - (d<=0 ? 7-startDay:d-startDay)*86400000); //rewind to start day
+                var lastday = new Date(firstday.valueOf() + 6 * 86400000);
+                firstday = firstday.toJSON().slice(0, 10);
+                lastday = lastday.toJSON().slice(0, 10);
                 break;
             case 'month':
                 btn[1].classList.add("active");

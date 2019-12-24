@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace WebQLXeMay.Services
 {
     public interface IHDXuat
     {
-        IQueryable<HDXuat> HDXuats { get; }
+        PagedList<HDXuatShow> HDXuats(int page);
         HDXuat GetHDXuat(string id);
         void Add(HDXuat _hdXuat);
         void Remove(string id);
