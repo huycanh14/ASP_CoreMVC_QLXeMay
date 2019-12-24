@@ -1,0 +1,93 @@
+﻿@model WebQLXeMay.Models.HDXuatShow
+
+@{
+    ViewData["Title"] = "Details HDXuat";
+    ViewData["TitleHeader"] = "Chi tiết hóa đơn " + Model.MaHoaDon;
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaHoaDon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaHoaDon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenXe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenXe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNhanVien)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenNhanVien)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayLap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NgayLap)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ThueGTGT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThueGTGT)%
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThanhTien)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoKhung)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoKhung)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoMay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoMay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BaoHanh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BaoHanh) tháng
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="~/dist/modules/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="~/dist/css/demo.css">
     <link rel="stylesheet" href="~/dist/css/style.css">
+    <link rel="stylesheet" href="~/css/select2.min.css">
+    <link rel="stylesheet" href="~/css/select2-bootstrap4.min.css">
 </head>
 <body>
     <div id="app">
@@ -86,8 +88,8 @@
                             <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>Hóa đơn xuất</span></a>
                             <ul class="menu-dropdown">
                                 <li><a asp-controller="HDXuat" asp-action="Index"><i class="ion ion-ios-circle-outline"></i> Danh sách</a></li>
-                                <li><a href="fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a></li>
-                                <li><a href="flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
+                                <li><a asp-controller="HDXuat" asp-action="Create"><i class="ion ion-ios-circle-outline"></i> Thêm</a></li>
+                                <li><a asp-controller="HDXuat" asp-action="Reports"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
                             </ul>
                         </li>
                         <li>
@@ -171,7 +173,7 @@
     <script src="~/dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="~/dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
     <script src="~/dist/js/sa-functions.js"></script>
-
+    <script src="~/js/select2.min.js"></script>
     <script src="~/dist/modules/chart.min.js"></script>
     <script src="~/dist/modules/summernote/summernote-lite.js"></script>
     <script src="~/dist/modules/toastr/build/toastr.min.js"></script>

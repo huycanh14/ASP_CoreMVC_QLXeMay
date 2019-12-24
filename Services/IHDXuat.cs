@@ -10,7 +10,7 @@ namespace WebQLXeMay.Services
     public interface IHDXuat
     {
         PagedList<HDXuatShow> HDXuats(int page);
-        HDXuat GetHDXuat(string id);
+        HDXuatShow GetHDXuat(string id);
         void Add(HDXuat _hdXuat);
         void Remove(string id);
         object Report(DateTime startTime, DateTime endTime);

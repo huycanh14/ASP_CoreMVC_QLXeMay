@@ -58,9 +58,9 @@
                 <td>@item.ThueGTGT %</td>
                 <td>@item.ThanhTien</td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.MaNCC }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaNCC }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNCC })*@
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.MaNCC }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaHoaDon })
                 </td>
             </tr>
           }
@@ -77,7 +77,6 @@
     @{
         var message_done = ViewBag.Done;
         var message_err = ViewBag.Error;
-        var data = Model;
     }
     <script>
         let li_pag = $(".pagination > li");
@@ -86,7 +85,6 @@
             li_pag[i].classList.add("page-item");
             ai_pag[i].classList.add("page-link");
         }
-        console.log('@Html.Raw(data)')
         var message_done = '@Html.Raw(message_done)';
         var message_err = '@Html.Raw(message_err)';
         console.log(message_done)

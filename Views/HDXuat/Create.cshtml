@@ -1,16 +1,13 @@
 ﻿@model WebQLXeMay.Models.HDXuat
 
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Create HDXuat";
+    ViewData["TitleHeader"] = "Thêm hóa đơn xuất";
 }
-
-<h2>Add</h2>
-
-<h4>HDXuat</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Add">
+    <div class="col-md-6">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="MaHoaDon" class="control-label"></label>
@@ -18,18 +15,28 @@
                 <span asp-validation-for="MaHoaDon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaXe" class="control-label"></label>
-                <input asp-for="MaXe" class="form-control" />
+                <label class="control-label">Tên xe</label>
+                <select asp-for="MaXe"
+                        class="form-control"
+                        asp-items="@(new SelectList(ViewBag.XeMays, "MaXe", "TenXe"))"
+                        id="MaXe"></select>
+
                 <span asp-validation-for="MaXe" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaKH" class="control-label"></label>
-                <input asp-for="MaKH" class="form-control" />
+                <label class="control-label">Tên khách hàng</label>
+                <select asp-for="MaKH"
+                        class="form-control"
+                        asp-items="@(new SelectList(ViewBag.KhachHangs, "MaKH", "TenKH"))"
+                        id="MaKH"></select>
                 <span asp-validation-for="MaKH" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaNhanVien" class="control-label"></label>
-                <input asp-for="MaNhanVien" class="form-control" />
+                <label class="control-label">Tên nhân viên</label>
+                <select asp-for="MaNhanVien"
+                        class="form-control"
+                        asp-items="@(new SelectList(ViewBag.NhanViens, "MaNhanVien", "TenNhanVien"))"
+                        id="MaNhanVien"></select>
                 <span asp-validation-for="MaNhanVien" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -39,23 +46,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="SoLuong" class="control-label"></label>
-                <input asp-for="SoLuong" class="form-control" />
+                <input asp-for="SoLuong" class="form-control" type="number" />
                 <span asp-validation-for="SoLuong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NgayLap" class="control-label"></label>
-                <input asp-for="NgayLap" class="form-control" />
-                <span asp-validation-for="NgayLap" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ThueGTGT" class="control-label"></label>
-                <input asp-for="ThueGTGT" class="form-control" />
+                <input asp-for="ThueGTGT" class="form-control" type="number" />
                 <span asp-validation-for="ThueGTGT" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThanhTien" class="control-label"></label>
-                <input asp-for="ThanhTien" class="form-control" />
-                <span asp-validation-for="ThanhTien" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MauSac" class="control-label"></label>
@@ -64,17 +61,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="SoKhung" class="control-label"></label>
-                <input asp-for="SoKhung" class="form-control" />
+                <input asp-for="SoKhung" class="form-control" type="number" />
                 <span asp-validation-for="SoKhung" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SoMay" class="control-label"></label>
-                <input asp-for="SoMay" class="form-control" />
+                <input asp-for="SoMay" class="form-control" type="number" />
                 <span asp-validation-for="SoMay" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BaoHanh" class="control-label"></label>
-                <input asp-for="BaoHanh" class="form-control" />
+                <input asp-for="BaoHanh" class="form-control" type="number" />
                 <span asp-validation-for="BaoHanh" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -89,5 +86,33 @@
 </div>
 
 @section Scripts {
+    @{
+        var message_done = ViewBag.Done;
+        var message_err = ViewBag.Error;
+    }
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $("#MaXe").select2({
+            placeholder: "Lựa chọn tên xe",
+            allowClear: true,
+            theme: 'bootstrap4',
+        });
+        $("#MaNhanVien").select2({
+            placeholder: "Lựa chọn tên nhân viên",
+            allowClear: true,
+            theme: 'bootstrap4',
+        });
+        $("#MaKH").select2({
+            placeholder: "Lựa chọn tên khách hàng",
+            allowClear: true,
+            theme: 'bootstrap4',
+        });
+        var message_done = '@Html.Raw(message_done)';
+        var message_err = '@Html.Raw(message_err)';
+        if (message_done != "" && message_done != null) {
+            toastr.success(message_done, 'Thành công!');
+        } else if (message_err != "" && message_err != null) {
+            toastr.error(message_err, 'Lỗi!');
+        }
+    </script>
 }

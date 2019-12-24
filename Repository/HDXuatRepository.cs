@@ -33,7 +33,7 @@ namespace WebQLXeMay.Repository
                                SoLuong = hdx.SoLuong,
                                NgayLap = hdx.NgayLap,
                                ThueGTGT = hdx.ThueGTGT,
-                               ThanhTien = hdx.ThanhTien,
+                               ThanhTien = (hdx.DonGia * hdx.SoLuong + ((hdx.DonGia * hdx.SoLuong) * hdx.ThueGTGT) / (100)),
                                MauSac = hdx.MauSac,
                                SoKhung = hdx.SoKhung,
                                SoMay = hdx.SoMay,
@@ -48,9 +48,29 @@ namespace WebQLXeMay.Repository
             db.SaveChanges();
         }
 
-        public HDXuat GetHDXuat(string id)
+        public HDXuatShow GetHDXuat(string id)
         {
-            return db.HDXuats.Find(id);
+            return (from hdx in db.HDXuats
+                    join kh in db.KhachHangs on hdx.MaKH equals kh.MaKH
+                    join xm in db.XeMays on hdx.MaXe equals xm.MaXe
+                    join nv in db.NhanViens on hdx.MaNhanVien equals nv.MaNhanVien
+                    where hdx.MaHoaDon == id
+                    select new HDXuatShow
+                    {
+                        MaHoaDon = hdx.MaHoaDon,
+                        TenXe = xm.TenXe,
+                        TenKH = kh.TenKH,
+                        TenNhanVien = nv.TenNhanVien,
+                        DonGia = hdx.DonGia,
+                        SoLuong = hdx.SoLuong,
+                        NgayLap = hdx.NgayLap,
+                        ThueGTGT = hdx.ThueGTGT,
+                        ThanhTien = (hdx.DonGia * hdx.SoLuong + ((hdx.DonGia * hdx.SoLuong) * hdx.ThueGTGT) / (100)),
+                        MauSac = hdx.MauSac,
+                        SoKhung = hdx.SoKhung,
+                        SoMay = hdx.SoMay,
+                        BaoHanh = hdx.BaoHanh
+                    }).FirstOrDefault();
         }
 
         public void Remove(string id)
