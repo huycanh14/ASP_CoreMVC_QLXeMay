@@ -1,0 +1,47 @@
+﻿@model WebQLXeMay.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Details KhachHang";
+    ViewData["TitleHeader"] = "Thông tin khách hàng " + Model.MaKH;
+}
+
+<h2>Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

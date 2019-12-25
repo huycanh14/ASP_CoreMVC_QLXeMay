@@ -101,7 +101,11 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="chartjs.html"><i class="ion ion-stats-bars"></i><span>Khách hàng</span></a>
+                            <a href="#" class="has-dropdown"><i class="ion ion-stats-bars"></i><span>Khách hàng</span></a>
+                            <ul class="menu-dropdown">
+                                <li><a asp-controller="KhachHang" asp-action="Index"><i class="ion ion-ios-circle-outline"></i> Danh sách</a></li>
+                                <li><a asp-controller="KhachHang" asp-action="Create"><i class="ion ion-ios-circle-outline"></i> Thêm</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Nhân viên</span></a>

@@ -1,0 +1,95 @@
+﻿@model PagedList.Core.IPagedList<WebQLXeMay.Models.KhachHang>
+
+@{
+    ViewData["Title"] = "Index Khách hàng";
+    ViewData["TitleHeader"] = "Danh sách khách hàng";
+}
+
+<form method="get" asp-controller="KhachHang" asp-action="Index" class="p-4">
+    <div class="row">
+        <div class="col-5">
+            <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control" placeholder="Search" aria-label="Search" />
+        </div>
+        <div class="col-2">
+            <input type="submit" name="Search" value="Submit" class="btn btn-secondary" />
+        </div>
+    </div>
+</form>
+<table class="table table-striped" border="1">
+    <thead class=" table-success ">
+        <tr>
+            <th scope="col">
+                Mã khách hàng
+            </th>
+            <th scope="col">
+                Tên khách hàng
+            </th>
+            <th scope="col">
+                Giới tính
+            </th>
+            <th scope="col">
+                Số điện thoại
+            </th>
+            <th scope="col">
+                Địa chỉ
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaKH }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaKH }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaKH })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <pager list="@Model" options="@PagedListRenderOptions.TwitterBootstrapPager"
+           class="pager-container"
+           asp-controller="KhachHang" asp-action="Index"
+           asp-route-keyword="@ViewBag.keyword" />
+</nav>
+@section Scripts
+{
+    @{
+        var message_done = ViewBag.Done;
+        var message_err = ViewBag.Error;
+    }
+    <script>
+        let li_pag = $(".pagination > li");
+        let ai_pag = $(".pagination > li > a")
+        for (let i = 0; i < li_pag.length; i++) {
+            li_pag[i].classList.add("page-item");
+            ai_pag[i].classList.add("page-link");
+        }
+        var message_done = '@Html.Raw(message_done)';
+        var message_err = '@Html.Raw(message_err)';
+        console.log(message_done)
+        if (message_done != "" && message_done != null) {
+            toastr.success(message_done, 'Thành công!');
+        } else if (message_err != "" && message_err != null) {
+            toastr.error(message_err, 'Lỗi!');
+        }
+    </script>
+}

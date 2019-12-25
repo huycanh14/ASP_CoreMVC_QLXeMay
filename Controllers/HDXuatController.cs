@@ -44,7 +44,7 @@ namespace WebQLXeMay.Controllers
         public IActionResult Create()
         {
             ViewBag.NhanViens = _nhanvien.GetNhanViens;
-            ViewBag.KhachHangs = _khachhang.GetKhachHangs;
+            ViewBag.KhachHangs = _khachhang.GetAllKhachHangs;
             ViewBag.XeMays = _xemay.GetXeMays;
             return View();
         }
@@ -65,7 +65,7 @@ namespace WebQLXeMay.Controllers
                 ViewBag.Error = ex.Message;
             }
             ViewBag.NhanViens = _nhanvien.GetNhanViens;
-            ViewBag.KhachHangs = _khachhang.GetKhachHangs;
+            ViewBag.KhachHangs = _khachhang.GetAllKhachHangs;
             ViewBag.XeMays = _xemay.GetXeMays;
             return View(hDXuat);
         }
