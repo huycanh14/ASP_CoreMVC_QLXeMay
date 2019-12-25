@@ -66,7 +66,7 @@ namespace WebQLXeMay.Models
         public string TenXe { get; set; }
         [DisplayName("Tên khách hàng")]
         public string TenKH { get; set; }
-        [DisplayName("Tê nhân viên")]
+        [DisplayName("Tên nhân viên")]
         public string TenNhanVien { get; set; }
         [DisplayName("Đơn giá")]
         public decimal DonGia { get; set; }

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Reports";
+    ViewData["TitleHeader"] = "Báo cáo hóa đơn nhập";
+}
+
+<div class="row">
+    <div class="col-4"><input type="date" name="firstDay" class="form-control" /></div>
+    <div class="col-4"><input type="date" name="lastDay" class="form-control" /></div>
+    <div class="col-1"><input type="submit" name="submit" value="Report" class="btn btn-danger form-control" onclick="callReport()" /></div>
+</div>
+<div>
+    <div class="card-body">
+        <canvas id="myChart" height="158"></canvas>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var callReport = () => {
+        var firstday = $("input[name=firstDay]").val();
+        var lastday = $("input[name=lastDay]").val();
+        console.log(firstday, lastday);
+        if (firstday != "" && lastday != "") {
+            reportHDXuat(firstday, lastday);
+        } else {
+            toastr.error("Thông tin chưa điền đủ", "Lỗi!");
+        }
+    }
+    var reportHDXuat = (firstday, lastday) => {
+        //let data =
+        var url = '@Url.Action("Report", "HDNhap")?startTime=' + firstday + '&endTime=' + lastday;
+        $.get(url, function (data) {
+            var data = data.data;
+            var MaXe = [];
+            var SoLuong = [];
+            for (let i = 0; i < data.length; i++) {
+                MaXe.push(data[i].maXe);
+                SoLuong.push(data[i].soLuong);
+            }
+            drawTempGraph(MaXe, SoLuong)
+        });
+    }
+
+    var drawTempGraph = (MaXe, SoLuong) => {
+        console.log(MaXe, SoLuong);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: MaXe,
+                datasets: [{
+                    label: 'Statistics',
+                    data: SoLuong,
+                    borderWidth: 2,
+                    backgroundColor: 'rgb(87,75,144)',
+                    borderColor: 'rgb(87,75,144)',
+                    borderWidth: 2.5,
+                    pointBackgroundColor: '#ffffff',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            //stepSize: 150
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+            }
+        });
+    }
+    </script>
+}
+

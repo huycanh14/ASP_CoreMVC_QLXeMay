@@ -1,20 +1,21 @@
-﻿@model PagedList.Core.IPagedList<WebQLXeMay.Models.HDXuatShow>
+﻿@model PagedList.Core.IPagedList<WebQLXeMay.Models.HDNhapShow>
+
 @{
-    ViewData["Title"] = "Index HDXuat";
-    ViewData["TitleHeader"] = "Danh sách Hóa đơn xuất";
+    ViewData["Title"] = "Index HDNhap";
+    ViewData["TitleHeader"] = "Danh sách Hóa đơn nhập";
 }
 
 <table class="table table-striped" border="1">
     <thead class=" table-success ">
         <tr>
             <th scope="col">
-                Mã Hóa đơn
+                Mã hóa đơn
             </th>
             <th scope="col">
                 Tên xe
             </th>
             <th scope="col">
-                Tên khách hàng
+                Tên nhân viên
             </th>
             <th scope="col">
                 Đơn giá
@@ -26,7 +27,7 @@
                 Ngày lập
             </th>
             <th scope="col">
-                Thuế GTGT
+                Thuế giá trị gia tăng
             </th>
             <th scope="col">
                 Thành tiền
@@ -35,42 +36,45 @@
         </tr>
     </thead>
     <tbody>
-        
-         @foreach (var item in Model)
-          {
+        @foreach (var item in Model)
+        {
             <tr>
-                <td scope="row">
-                    @item.MaHoaDon
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaHoaDon)
                 </td>
                 <td>
-                    @item.TenXe
+                    @Html.DisplayFor(modelItem => item.TenXe)
                 </td>
                 <td>
-                    @item.TenKH
+                    @Html.DisplayFor(modelItem => item.TenNhanVien)
                 </td>
                 <td>
-                    @item.DonGia
+                    @Html.DisplayFor(modelItem => item.DonGia)
                 </td>
                 <td>
-                    @item.SoLuong
+                    @Html.DisplayFor(modelItem => item.SoLuong)
                 </td>
-                <td>@item.NgayLap</td>
-                <td>@item.ThueGTGT %</td>
-                <td>@item.ThanhTien</td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.MaNCC }) |*@
+                    @Html.DisplayFor(modelItem => item.NgayLap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThueGTGT)%
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThanhTien)
+                </td>
+                <td>
                     @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.MaHoaDon })
                 </td>
             </tr>
-          }
+        }
     </tbody>
-
 </table>
 <nav aria-label="Page navigation example">
     <pager list="@Model" options="@PagedListRenderOptions.TwitterBootstrapPager"
            class="pager-container"
-           asp-controller="HDXuat" asp-action="Index" />
+           asp-controller="HDNhap" asp-action="Index" />
 </nav>
 @section Scripts
 {
