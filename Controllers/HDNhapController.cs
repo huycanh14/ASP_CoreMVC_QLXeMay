@@ -38,7 +38,7 @@ namespace WebQLXeMay.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.NhanViens = _nhanvien.GetNhanViens;
+            ViewBag.NhanViens = _nhanvien.GetAllNhanViens;
             ViewBag.XeMays = _xemay.GetAllXeMays;
             return View();
         }
@@ -57,7 +57,7 @@ namespace WebQLXeMay.Controllers
             {
                 ViewBag.Error = ex.Message;
             }
-            ViewBag.NhanViens = _nhanvien.GetNhanViens;
+            ViewBag.NhanViens = _nhanvien.GetAllNhanViens;
             ViewBag.XeMays = _xemay.GetAllXeMays;
             return View(hDNhap);
         }

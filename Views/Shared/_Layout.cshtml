@@ -115,7 +115,11 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Nhân viên</span></a>
+                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Nhân viên</span></a>
+                            <ul class="menu-dropdown">
+                                <li><a asp-controller="NhanVien" asp-action="Index"><i class="ion ion-ios-circle-outline"></i> Danh sách</a></li>
+                                <li><a asp-controller="NhanVien" asp-action="Create"><i class="ion ion-ios-circle-outline"></i> Thêm</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Tài khoản</span></a>
