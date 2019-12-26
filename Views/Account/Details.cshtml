@@ -1,0 +1,45 @@
+﻿@model WebQLXeMay.Models.Admin
+
+@{
+    ViewData["Title"] = "Details Account";
+    ViewData["TitleHeader"] = "Chi tiết tài khoản " + Model.ID;
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDangNhap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoVaTen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoVaTen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    <a asp-action="Index">Back to List</a>
+</div>

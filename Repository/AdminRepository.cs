@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using WebQLXeMay.Models;
 using WebQLXeMay.Services;
 using Microsoft.EntityFrameworkCore;
+using PagedList.Core;
 
 namespace WebQLXeMay.Repository
 {
@@ -15,7 +16,14 @@ namespace WebQLXeMay.Repository
         {
             db = _db;
         }
-        public IQueryable<Admin> GetAdmins => db.Admins;
+        //public IQueryable<Admin> GetAdmins => db.Admins;
+        public PagedList<Admin> GetAdmins(int page, string keyword)
+        {
+            int pageSize = 5;
+            var acc = (keyword != null) ? db.Admins.Where(p => p.HoVaTen.Contains(keyword)) : db.Admins;
+            PagedList<Admin> data = new PagedList<Admin>(acc, page, pageSize);
+            return data;
+        }
 
         public void Add(Admin admin)
         {
@@ -40,5 +48,10 @@ namespace WebQLXeMay.Repository
                             .FirstOrDefault();
         }
 
+        public void Edit(Admin admin)
+        {
+            db.Admins.Update(admin);
+            db.SaveChanges();
+        }
     }
 }
