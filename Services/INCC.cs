@@ -9,6 +9,7 @@ namespace WebQLXeMay.Services
 {
     public interface INCC
     {
+        IQueryable<NCC> GetAllNCCs { get; }
         PagedList<NCC> GetNCCs(int page, string keyword);
         NCC GetNCC(string id);
         void Add(NCC _ncc);

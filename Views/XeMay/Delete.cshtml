@@ -1,0 +1,55 @@
+﻿@model WebQLXeMay.Models.XeMayShow
+
+@{
+    ViewData["Title"] = "Delete XeMay";
+    ViewData["TitleHeader"] = "Xóa xe máy " + Model.MaXe;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaXe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaXe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenXe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenXe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNCC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenNCC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

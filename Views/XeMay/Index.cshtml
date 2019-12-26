@@ -1,0 +1,100 @@
+﻿@model PagedList.Core.IPagedList<WebQLXeMay.Models.XeMayShow>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["TitleHeader"] = "Danh sách xe máy";
+}
+<form method="get" asp-controller="XeMay" asp-action="Index" class="p-4">
+    <div class="row">
+        <div class="col-5">
+            <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control" placeholder="Search" aria-label="Search" />
+        </div>
+        <div class="col-2">
+            <input type="submit" name="Search" value="Submit" class="btn btn-secondary" />
+        </div>
+    </div>
+</form>
+<table class="table table-striped" border="1">
+    <thead class=" table-success ">
+        <tr>
+            <th scope="col">
+                Mã xe
+            </th>
+            <th scope="col">
+                Tên xe
+            </th>
+            <th scope="col">
+                Tên nhà cung cấp
+            </th>
+            <th scope="col">
+                Đơn giá
+            </th>
+            <th scope="col">
+                Số lượng
+            </th>
+            <th scope="col">
+                Màu sắc
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr scope="row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaXe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenXe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MauSac)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaXe }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaXe })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <pager list="@Model" options="@PagedListRenderOptions.TwitterBootstrapPager"
+           class="pager-container"
+           asp-controller="XeMay" asp-action="Index"
+           asp-route-keyword="@ViewBag.keyword" />
+</nav>
+@section Scripts
+{
+    @{
+        var message_done = ViewBag.Done;
+        var message_err = ViewBag.Error;
+    }
+    <script>
+        let li_pag = $(".pagination > li");
+        let ai_pag = $(".pagination > li > a")
+        for (let i = 0; i < li_pag.length; i++) {
+            li_pag[i].classList.add("page-item");
+            ai_pag[i].classList.add("page-link");
+        }
+        var message_done = '@Html.Raw(message_done)';
+        var message_err = '@Html.Raw(message_err)';
+        console.log(message_done)
+        if (message_done != "" && message_done != null) {
+            toastr.success(message_done, 'Thành công!');
+        } else if (message_err != "" && message_err != null) {
+            toastr.error(message_err, 'Lỗi!');
+        }
+    </script>
+}

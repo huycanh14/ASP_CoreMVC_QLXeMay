@@ -39,7 +39,7 @@ namespace WebQLXeMay.Controllers
         public IActionResult Create()
         {
             ViewBag.NhanViens = _nhanvien.GetNhanViens;
-            ViewBag.XeMays = _xemay.GetXeMays;
+            ViewBag.XeMays = _xemay.GetAllXeMays;
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace WebQLXeMay.Controllers
                 ViewBag.Error = ex.Message;
             }
             ViewBag.NhanViens = _nhanvien.GetNhanViens;
-            ViewBag.XeMays = _xemay.GetXeMays;
+            ViewBag.XeMays = _xemay.GetAllXeMays;
             return View(hDNhap);
         }
 
