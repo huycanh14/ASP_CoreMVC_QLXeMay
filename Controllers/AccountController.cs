@@ -137,5 +137,11 @@ namespace WebQLXeMay.Controllers
             }
             return RedirectToAction("Index", "Account");
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("account_login");
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
