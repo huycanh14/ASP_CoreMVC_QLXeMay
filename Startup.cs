@@ -44,20 +44,24 @@ namespace WebQLXeMay
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseBrowserLink();
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseBrowserLink();
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseStatusCodePagesWithRedirects("/Home/Error");
+            //}
 
             app.UseSession();
             app.UseMiddleware<AuthenticationMiddleware>();
+            //app.UseMiddleware404();
+            //app.UseMiddleware<Middleware404>();
+            app.UseStatusCodePages();
+            app.UseStatusCodePagesWithReExecute("/Home/Error");
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
