@@ -61,7 +61,7 @@ namespace WebQLXeMay
             app.UseStatusCodePages();
             app.UseStatusCodePagesWithReExecute("/Home/Error");
 
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
